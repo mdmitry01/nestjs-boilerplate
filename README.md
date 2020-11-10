@@ -86,7 +86,7 @@ export class ExampleService {
 }
 ```
 
-#### Configurable Hook
+##### Configurable Hook
 
 ```typescript
 @Injectable()
@@ -117,7 +117,7 @@ export class ExampleService {
 }
 ```
 
-#### Class decorator
+##### Class decorator
 
 ```typescript
 @Hooks<ExampleService>({
@@ -131,7 +131,7 @@ export class ExampleService {
 }
 ```
 
-#### Hooks with CRUD services
+##### Hooks with CRUD services
 
 ```typescript
 @Hooks<UserService>(getCrudMap([
