@@ -6,6 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "postinstall": "patch-package",
     "demo": "tsc-watch --compiler ttypescript/bin/tsc",
     "prebuild": "shx rm -rf dist",
     "build": "nest build",
