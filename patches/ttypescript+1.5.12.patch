@@ -1,0 +1,17 @@
+diff --git a/node_modules/ttypescript/lib/patchCreateProgram.js b/node_modules/ttypescript/lib/patchCreateProgram.js
+index c922ae3..b441381 100644
+--- a/node_modules/ttypescript/lib/patchCreateProgram.js
++++ b/node_modules/ttypescript/lib/patchCreateProgram.js
+@@ -64,9 +64,10 @@ function patchCreateProgram(tsm, forceReadConfig, projectDir) {
+         var plugins = preparePluginsFromCompilerOptions(options.plugins);
+         var pluginCreator = new PluginCreator_1.PluginCreator(tsm, plugins, projectDir);
+         var originEmit = program.emit;
+-        program.emit = function newEmit(targetSourceFile, writeFile, cancellationToken, emitOnlyDtsFiles, customTransformers) {
++        program.emit = function newEmit(targetSourceFile, writeFile, cancellationToken, emitOnlyDtsFiles, customTransformers, argument) {
++            console.log("argument", argument);
+             var mergedTransformers = pluginCreator.createTransformers({ program: program }, customTransformers);
+-            var result = originEmit(targetSourceFile, writeFile, cancellationToken, emitOnlyDtsFiles, mergedTransformers);
++            var result = originEmit(targetSourceFile, writeFile, cancellationToken, emitOnlyDtsFiles, mergedTransformers, argument);
+             // todo: doesn't work with 3.7
+             // result.diagnostics = [...result.diagnostics, ...transformerErrors.get(program)!];
+             return result;
